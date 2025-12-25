@@ -58,7 +58,10 @@ As result you will get game response from a game platform
     - Roller (gameId: 101)
     - CoolBall (gameId: 102)
 ## Before running you will have to generate private and public keys:
-
+1. Generate a private key for demo-external-jwt-issuer - externalPrivateKey.pem (will be used for signing external JWT)
+2. Generate a public key for demo-external-jwt-issuer - externalPublicKey.pem (will be used for verifying external JWT)
+3. Copy a public key from demo-external-jwt-issuer (externalPublicKey.pem) to adapter/src/main/resources/
+4. Generate private & public keys for adapter (will be used for signing and verifying internal JWT)
 ```shell script
 cd demo-external-jwt-issuer/src/main/resources
 openssl genrsa -out externalPrivateKey.pem 2048
