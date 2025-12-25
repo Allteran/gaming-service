@@ -57,7 +57,20 @@ As result you will get game response from a game platform
     - IndianaJohnSlits (gameId: 100)
     - Roller (gameId: 101)
     - CoolBall (gameId: 102)
-## Before running you will have to generate 
+## Before running you will have to generate private and public keys:
+
+```shell script
+cd demo-external-jwt-issuer/src/main/resources
+openssl genrsa -out externalPrivateKey.pem 2048
+openssl rsa -in externalPrivateKey.pem -pubout -out externalPublicKey.pem
+cd ../../../..
+cp demo-external-jwt-issuer/src/main/resources/externalPublicKey.pem adapter/src/main/resources/
+
+cd adapter/src/main/resources
+openssl genrsa -out internalPrivateKey.pem 2048
+openssl rsa -in internalPrivateKey.pem -pubout -out internalPublicKey.pem
+
+```
 # Tests
 ## Accessing from platform to the game that is allowed
 1. Requesting token from demo-external-jwt-issuer:
